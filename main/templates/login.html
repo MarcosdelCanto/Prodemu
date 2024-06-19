@@ -1,0 +1,168 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Inicio Sesión</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'imagenes/favicon2.ico' %}">
+    <script src="https://kit.fontawesome.com/801590c25c.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="header"> 
+        <a href="/"  id="logo" class="logo">
+            <img src="{% static 'imagenes/logo.png' %}" alt="">
+        </a>
+        <div class="header-right">
+            <a href="/">Inicio</a>
+            <a href="/productos">Productos</a>
+            <a href="/nosotros">Sobre nosotros</a>
+            <a href="/login">Perfil</a>
+            <a class="nav-link" href="/carrito">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+    </div>
+    <div class="login-container">
+        <div class="form-box">
+            <h1 id="titulo">Registro</h1>
+            <form>
+                <div class="input-group">
+                    <div class="input-field" id="nombre-field">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="nombre" spellcheck="false" placeholder="Nombre">
+                        <span id="error-nombre"></span>
+                    </div>
+                    <div class="input-field" id="email-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" spellcheck="false" id="email" placeholder="Email" >
+                        <span id="error-email"></span>
+                    </div>
+                    
+                    <div class="input-field" id="pass-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="pass" placeholder="Contraseña" >
+                        <span id="error-pass"></span>
+                    </div>
+                    <p>¿Olvidaste tu contraseña? <a href="#">click aquí</a></p>
+                </div>
+                <div class="btn-field">
+                    <button type="button" id="regBtn">Registrarme</button>
+                    <button type="button" id="inSeBtn" class="disable">Iniciar Sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+        <ul class="social-icon">
+        <li class="icon-elem">
+            <a href="https://www.instagram.com/adv_cosmets/" target="_blank" rel="noopener noreferrer" class="icon">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+        </li>
+        <li class="icon-elem">
+            <a href="https://wa.link/kwo6rm" target="_blank" rel="noopener noreferrer" class="icon">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+        </li>
+        <li class="icon-elem">
+            <a href="https://web.facebook.com/COSMETICAADV?locale=es_LA" target="_blank" rel="noopener noreferrer" class="icon">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+        </li>
+        <li class="icon-elem">
+            <a href="mailto:carolina.advbascuar@gmail.com" target="_blank" rel="noopener noreferrer" class="icon">
+                <ion-icon name="mail-outline"></ion-icon>
+            </a>
+        </li>
+    </ul>
+    <ul class="menu">
+        <li class="menu-elem">
+            <a href="/" class="menu-icon"> Inicio </a>
+        </li>
+        <li class="menu-elem">
+            <a href="/productos" class="menu-icon">Productos</a>
+        </li>
+        <li class="menu-elem">
+            <a href="/nosotros" class="menu-icon"> Sobre Nosotros </a>
+        </li>
+    </ul>
+    <p class="text">2024 | Todos los derechos reservados</p>
+    </footer>
+    
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let titulo = document.getElementById("titulo");
+            let nombre = document.getElementById("nombre");
+            let email = document.getElementById("email");
+            let pass = document.getElementById("pass");
+            let errorNombre = document.getElementById("error-nombre");
+            let errorEmail = document.getElementById("error-email");
+            let errorPass = document.getElementById("error-pass");
+            let nombreField = document.getElementById("nombre-field");
+            let emailField = document.getElementById("email-field");
+            let passField = document.getElementById("pass-field");
+            let regBtn = document.getElementById("regBtn");
+            let inSeBtn = document.getElementById("inSeBtn");
+            inSeBtn.onclick = function(){
+                nombreField.style.maxHeight = "0";
+                titulo.innerHTML = "Iniciar Sesión";
+                regBtn.classList.add("disable");
+                inSeBtn.classList.remove("disable");
+            };
+            regBtn.onclick = function(){
+                nombreField.style.maxHeight = "65px";
+                titulo.innerHTML = "Registrarme";
+                regBtn.classList.remove("disable");
+                inSeBtn.classList.add("disable");
+            };
+            email.onblur = validaEmail;
+            pass.onblur = validaPass;
+            nombre.onblur = validaNombre;
+            function validaNombre(){
+                if(!nombre.value.match(/^[A-Za-z]+$/)){
+                    errorNombre.innerHTML = "Sin números ni símbolos";
+                    nombreField.classList.add("input-error");
+                    return false;
+                }
+                errorNombre.innerHTML = "";
+                nombreField.classList.remove("input-error");
+                return true;
+            }
+            function validaEmail(){
+                if(!email.value.match(/^[A-Za-z._\-0-9]+@[A-Za-z]+\.[a-z]{2,4}$/)){
+                    errorEmail.innerHTML = "Email inválido";
+                    emailField.classList.add("input-error");
+                    return false;
+                }
+                errorEmail.innerHTML = "";
+                emailField.classList.remove("input-error");
+                return true;
+            }
+            function validaPass(){
+                if(!pass.value.match(/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,16}$/)){
+                    errorPass.innerHTML = "Contraseña inválida";
+                    passField.classList.add("input-error");
+                    return false;
+                }
+                errorPass.innerHTML = "";
+                passField.classList.remove("input-error");
+                return true;
+            }
+        });
+    </script>
+</body>
+</html>

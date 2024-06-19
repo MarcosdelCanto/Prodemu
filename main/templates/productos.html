@@ -1,0 +1,207 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Cosmetica ADV</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'imagenes/favicon2.ico' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="header"> 
+        <a href="/"  id="logo" class="logo">
+            <img src="{% static 'imagenes/logo.png' %}" alt="">
+        </a>
+        <div class="header-right">
+            <a href="/">Inicio</a>
+            <a href="/productos">Productos</a>
+            <a href="/nosotros">Sobre nosotros</a>
+            <a href="/login">Perfil</a>
+            <a class="nav-link" href="/carrito">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="category-filter">
+            <div class="container-producto">
+                <div class="cabecera-producto">
+                    <h1>Productos</h1>
+                </div>
+                <div class="filter-btns">
+                    <button type ="button" class="filter-btn" id="todo">Todo</button>
+                    <button type ="button" class="filter-btn" id="belleza-flt">Belleza</button>
+                    <button type ="button" class="filter-btn" id="syb-flt">Salud y bienestar</button>
+                    <button type ="button" class="filter-btn" id="banio">Baño</button>
+                </div>
+            
+                <div class="contenedor-search">
+                    <form class="search-bar" action="" style="margin:auto;max-width:300px">
+                        <input type="text" placeholder="Buscar producto..." name="search2">
+                        <button type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="filter-items">
+                    <div class="filter-item">
+                        <div class="item-img">
+                            <img src="/imagenes/producto1.png" alt="Item image">
+                        </div>
+                        <div class="item-info">
+                            <h2>Loción anticaida</h2>
+                            <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                            <div>
+                                <span class="precio">$9.000</span>
+                            </div>
+                            <a href="#" class="add-btn">Añadir al carrito</a>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="item-img">
+                            <img src="/imagenes/producto2.png" alt="Item image">
+                        </div>
+                        <div class="item-info">
+                            <h2>Aceite de ricino</h2>
+                            <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                            <div>
+                                <span class="precio">$10.000</span>
+                            </div>
+                            <a href="#" class="add-btn">Añadir al carrito</a>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="item-img">
+                            <img src="/imagenes/producto3.png" alt="Item image">
+                        </div>
+                        <div class="item-info">
+                            <h2>Kit limpieza facil</h2>
+                            <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                            <div>
+                                <span class="precio">$15.000</span>
+                            </div>
+                            <a href="#" class="add-btn">Añadir al carrito</a>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="item-img">
+                            <img src="/imagenes/producto4.png" alt="Item image">
+                        </div>
+                        <div class="item-info">
+                            <h2>Polvo efervescente para baño</h2>
+                            <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                            <div>
+                                <span class="precio">$5.000</span>
+                            </div>
+                            <a href="#" class="add-btn">Añadir al carrito</a>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="item-img">
+                            <img src="/imagenes/producto5.png" alt="Item image">
+                        </div>
+                        <div class="item-info">
+                            <h2>Set de velas de cactus</h2>
+                            <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                            <div>
+                                <span class="precio">$6.000</span>
+                            </div>
+                            <a href="#" class="add-btn">Añadir al carrito</a>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="item-img">
+                            <img src="/imagenes/producto6.png" alt="Item image">
+                        </div>
+                        <div class="item-info">
+                            <h2>Velas aromáticas</h2>
+                            <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                            <div>
+                                <span class="precio">$3.000</span>
+                            </div>
+                            <a href="#" class="add-btn">Añadir al carrito</a>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="item-img">
+                            <img src="/imagenes/producto7.png" alt="Item image">
+                        </div>
+                        <div class="item-info">
+                            <h2>Repelente para mosquitos</h2>
+                            <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                            <div>
+                                <span class="precio">$6.000</span>
+                            </div>
+                            <a href="#" class="add-btn">Añadir al carrito</a>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="item-img">
+                            <img src="/imagenes/producto8.png" alt="Item image">
+                        </div>
+                        <div class="item-info">
+                            <h2>Jabón Romero-Curcuma</h2>
+                            <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                            <div>
+                                <span class="precio">$5.000</span>
+                            </div>
+                            <a href="#" class="add-btn">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+        <ul class="social-icon">
+        <li class="icon-elem">
+            <a href="https://www.instagram.com/adv_cosmets/" target="_blank" rel="noopener noreferrer" class="icon">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+        </li>
+        <li class="icon-elem">
+            <a href="https://wa.link/kwo6rm" target="_blank" rel="noopener noreferrer" class="icon">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+        </li>
+        <li class="icon-elem">
+            <a href="https://web.facebook.com/COSMETICAADV?locale=es_LA" target="_blank" rel="noopener noreferrer" class="icon">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+        </li>
+        <li class="icon-elem">
+            <a href="mailto:carolina.advbascuar@gmail.com" target="_blank" rel="noopener noreferrer" class="icon">
+                <ion-icon name="mail-outline"></ion-icon>
+            </a>
+        </li>
+    </ul>
+    <ul class="menu">
+        <li class="menu-elem">
+            <a href="/" class="menu-icon"> Inicio </a>
+        </li>
+        <li class="menu-elem">
+            <a href="/productos" class="menu-icon">Productos</a>
+        </li>
+        <li class="menu-elem">
+            <a href="/nosotros" class="menu-icon"> Sobre Nosotros </a>
+        </li>
+    </ul>
+    <p class="text">2024 | Todos los derechos reservados</p>
+    </footer>
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+    <script src = "script.js"></script>
+</body>
+</html>
