@@ -8,6 +8,7 @@ class Cliente(models.Model):
     pass_cli = models.CharField(max_length=30)
     direccion_cli = models.CharField(max_length=200)
     telefono_cli = models.CharField(max_length=13)
+    
 class Pago(models.Model):
     id_pago = models.AutoField(primary_key=True)
     monto_pago = models.IntegerField()
@@ -22,25 +23,35 @@ class Orden(models.Model):
     estado_orden = models.CharField(max_length=10)
     id_cli = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     id_pago = models.ForeignKey(Pago, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Orden'
+        verbose_name_plural = 'Ordenes'
     
 class Categoria_producto(models.Model):
     id_categoria = models.AutoField(primary_key=True)
     descrip_categoria = models.CharField(max_length= 30)
+    def __str__(self):
+        return self.descrip_categoria
     
 class Producto (models.Model):
     id_producto = models.AutoField(primary_key=True)
-    nombre_producto = models.CharField(max_length=50)
-    descri_producto = models.CharField(max_length= 150)
-    precio_producto = models.IntegerField()
-    estado_producto = models.BooleanField(default=True) 
-    img_producto = models.ImageField()
-    id_categoria = models.ForeignKey(Categoria_producto, on_delete=models.CASCADE)
+    nombre_producto = models.CharField(max_length=50, verbose_name='Nombre')
+    descri_producto = models.TextField(max_length= 150, verbose_name='Descripcion')
+    precio_producto = models.IntegerField(verbose_name='Precio')
+    estado_producto = models.BooleanField(default=True, verbose_name='Disponibilidad') 
+    img_producto = models.ImageField(upload_to="productos")
+    id_categoria = models.ForeignKey(Categoria_producto, on_delete=models.CASCADE, verbose_name='Categoria')
+    def __str__(self):
+        return self.nombre_producto
     
 class Detalle_carro (models.Model):
     id_detalle_carro = models.AutoField(primary_key=True)
     cantidad_prod = models.IntegerField()
     precio_prod = models.IntegerField()
     id_producto = models.ForeignKey(Producto,on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = 'Detalle_carro'
     
 class Carro_compra (models.Model):
     id_carro = models.AutoField(primary_key=True)

@@ -1,0 +1,134 @@
+{% extends "main/base.html" %}
+{% block contenido %}
+<div class="wrapper">
+    <div class="category-filter">
+        <div class="container-producto">
+            <div class="cabecera-producto">
+                <h1>Productos</h1>
+            </div>
+            <div class="filter-btns">
+                <button type ="button" class="filter-btn" id="todo">Todo</button>
+                <button type ="button" class="filter-btn" id="belleza-flt">Belleza</button>
+                <button type ="button" class="filter-btn" id="syb-flt">Salud y bienestar</button>
+                <button type ="button" class="filter-btn" id="banio">Baño</button>
+            </div>
+        
+            <div class="contenedor-search">
+                <form class="search-bar" action="" style="margin:auto;max-width:300px">
+                    <input type="text" placeholder="Buscar producto..." name="search2">
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="filter-items">
+                {% for producto in productos %}
+                <div class="filter-item">
+                    <div class="item-img">
+                        <img src="{% static 'producto+{producto.id_producto}' %}" alt="Item image">
+                    </div>
+                    <div class="item-info">
+                        <h2>{{ producto.nombre_producto }}</h2>
+                        <p>{{ producto.desc_producto }}</p>
+                        <div>
+                            <span class="precio">{{ producto.precio }}</span>
+                        </div>
+                        <a href="#" class="add-btn">Añadir al carrito</a>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="item-img">
+                        <img src="/imagenes/producto2.png" alt="Item image">
+                    </div>
+                    <div class="item-info">
+                        <h2>Aceite de ricino</h2>
+                        <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <div>
+                            <span class="precio">$10.000</span>
+                        </div>
+                        <a href="#" class="add-btn">Añadir al carrito</a>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="item-img">
+                        <img src="/imagenes/producto3.png" alt="Item image">
+                    </div>
+                    <div class="item-info">
+                        <h2>Kit limpieza facil</h2>
+                        <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <div>
+                            <span class="precio">$15.000</span>
+                        </div>
+                        <a href="#" class="add-btn">Añadir al carrito</a>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="item-img">
+                        <img src="/imagenes/producto4.png" alt="Item image">
+                    </div>
+                    <div class="item-info">
+                        <h2>Polvo efervescente para baño</h2>
+                        <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <div>
+                            <span class="precio">$5.000</span>
+                        </div>
+                        <a href="#" class="add-btn">Añadir al carrito</a>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="item-img">
+                        <img src="/imagenes/producto5.png" alt="Item image">
+                    </div>
+                    <div class="item-info">
+                        <h2>Set de velas de cactus</h2>
+                        <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <div>
+                            <span class="precio">$6.000</span>
+                        </div>
+                        <a href="#" class="add-btn">Añadir al carrito</a>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="item-img">
+                        <img src="/imagenes/producto6.png" alt="Item image">
+                    </div>
+                    <div class="item-info">
+                        <h2>Velas aromáticas</h2>
+                        <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <div>
+                            <span class="precio">$3.000</span>
+                        </div>
+                        <a href="#" class="add-btn">Añadir al carrito</a>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="item-img">
+                        <img src="/imagenes/producto7.png" alt="Item image">
+                    </div>
+                    <div class="item-info">
+                        <h2>Repelente para mosquitos</h2>
+                        <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <div>
+                            <span class="precio">$6.000</span>
+                        </div>
+                        <a href="#" class="add-btn">Añadir al carrito</a>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <div class="item-img">
+                        <img src="/imagenes/producto8.png" alt="Item image">
+                    </div>
+                    <div class="item-info">
+                        <h2>Jabón Romero-Curcuma</h2>
+                        <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <div>
+                            <span class="precio">$5.000</span>
+                        </div>
+                        <a href="#" class="add-btn">Añadir al carrito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
