@@ -8,18 +8,19 @@
             <div class="input-group">
                 <div class="input-field" id="nombre-field">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" id="nombre" spellcheck="false" placeholder="Nombre">
+                    {{ form }}
+                    <!-- <input type="text" id="nombre" spellcheck="false" placeholder="Nombre"> -->
                     <span id="error-nombre"></span>
                 </div>
                 <div class="input-field" id="email-field">
                     <i class="fa-solid fa-envelope"></i>
-                    <input type="email" spellcheck="false" id="email" placeholder="Email" >
+                    <!-- <input type="email" spellcheck="false" id="email" placeholder="Email" > -->
                     <span id="error-email"></span>
                 </div>
                 
                 <div class="input-field" id="pass-field">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="pass" placeholder="Contraseña" >
+                    <!-- <input type="password" id="pass" placeholder="Contraseña" > -->
                     <span id="error-pass"></span>
                 </div>
                 <p>¿Olvidaste tu contraseña? <a href="#">click aquí</a></p>

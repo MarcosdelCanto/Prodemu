@@ -1,28 +1,22 @@
 {% extends "main/base.html" %}
-
+{% load static %}
 {% block contenido %}
 <div class="heading"> 
-
     <h1> Sobre Nosotros </h1>
-    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </div>
 <div class="container">
     <section class="about">
         <div class="about-image">
-            <img src="https://i.ytimg.com/vi/hPp0hS5am0A/maxresdefault.jpg" alt=""> <!-- 1280x720 -->
+            <img src="{% static 'main/imagenes/logo.png' %}" alt="logo empresa">
         </div>
         <div class="about-content">
             <h2>¿Quiénes somos?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, 
-            sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <a href="#" class="read-more">conozcanos</a>
+            <p>Mi nombre es Carolina, una mujer porteña, casada y madre de tres hijos. 
+                Comencé mi viaje como emprendedora haciendo jabones artesanales en casa,
+                buscando generar ingresos sin descuidar a mi familia.
+                Con el tiempo, me inscribí en talleres y cursos sobre cosmética natural, 
+                lo que me dio la confianza para profesionalizar mi negocio.</p>
+            <a href="https://www.instagram.com/adv_cosmets/" target="_blank" rel="noopener noreferrer" class="read-more">Conoce mi instagram</a>
             </div>
     </section>        
 </div>
