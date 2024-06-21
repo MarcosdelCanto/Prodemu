@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Cliente, Pago, Orden, Categoria_producto, Producto, Detalle_carro, Carro_compra
-from .forms import crearCliente
+from .forms import crearNombreCliente
 
 # Create your views here.
 def inicio(request):
@@ -8,7 +8,7 @@ def inicio(request):
 
 def login(request):
     return render(request, 'main/login.html', {
-        'form': crearCliente()
+        'form': crearNombreCliente()
     })
 
 def nosotros(request):

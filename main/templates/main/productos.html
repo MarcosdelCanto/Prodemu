@@ -1,4 +1,5 @@
 {% extends "main/base.html" %}
+{% load static %}
 {% block contenido %}
 <div class="wrapper">
     <div class="category-filter">
@@ -22,23 +23,22 @@
                 </form>
             </div>
             <div class="filter-items">
-                {% for producto in productos %}
                 <div class="filter-item">
                     <div class="item-img">
-                        <img src="{% static 'producto+{producto.id_producto}' %}" alt="Item image">
+                        <img src="{% static 'main/imagenes/producto1.png' %}" alt="Item image">
                     </div>
                     <div class="item-info">
-                        <h2>{{ producto.nombre_producto }}</h2>
-                        <p>{{ producto.desc_producto }}</p>
+                        <h2>Aceite de ricino</h2>
+                        <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
                         <div>
-                            <span class="precio">{{ producto.precio }}</span>
+                            <span class="precio">$9.000</span>
                         </div>
                         <a href="#" class="add-btn">Añadir al carrito</a>
                     </div>
                 </div>
                 <div class="filter-item">
                     <div class="item-img">
-                        <img src="/imagenes/producto2.png" alt="Item image">
+                        <img src="{% static 'main/imagenes/producto2.png' %}" alt="Item image">
                     </div>
                     <div class="item-info">
                         <h2>Aceite de ricino</h2>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="filter-item">
                     <div class="item-img">
-                        <img src="/imagenes/producto3.png" alt="Item image">
+                        <img src="{% static 'main/imagenes/producto3.png' %}" alt="Item image">
                     </div>
                     <div class="item-info">
                         <h2>Kit limpieza facil</h2>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="filter-item">
                     <div class="item-img">
-                        <img src="/imagenes/producto4.png" alt="Item image">
+                        <img src="{% static 'main/imagenes/producto4.png' %}" alt="Item image">
                     </div>
                     <div class="item-info">
                         <h2>Polvo efervescente para baño</h2>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="filter-item">
                     <div class="item-img">
-                        <img src="/imagenes/producto5.png" alt="Item image">
+                        <img src="{% static 'main/imagenes/producto5.png' %}" alt="Item image">
                     </div>
                     <div class="item-info">
                         <h2>Set de velas de cactus</h2>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="filter-item">
                     <div class="item-img">
-                        <img src="/imagenes/producto6.png" alt="Item image">
+                        <img src="{% static 'main/imagenes/producto6.png' %}" alt="Item image">
                     </div>
                     <div class="item-info">
                         <h2>Velas aromáticas</h2>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="filter-item">
                     <div class="item-img">
-                        <img src="/imagenes/producto7.png" alt="Item image">
+                        <img src="{% static 'main/imagenes/producto7.png' %}" alt="Item image">
                     </div>
                     <div class="item-info">
                         <h2>Repelente para mosquitos</h2>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="filter-item">
                     <div class="item-img">
-                        <img src="/imagenes/producto8.png" alt="Item image">
+                        <img src="{% static 'main/imagenes/producto8.png' %}" alt="Item image">
                     </div>
                     <div class="item-info">
                         <h2>Jabón Romero-Curcuma</h2>

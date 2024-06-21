@@ -588,11 +588,11 @@ form p a{
 }
 
 .heading h1{
+    color:  var(--morado);
     font-size: 50px;
-    color: #9089cc;
-    margin-bottom: 25px;
-    position: relative;
     text-align: center;
+    margin-top: 30px;
+    font-weight: bolder;
 }
 .heading p{
     font-size: 18px;
@@ -622,9 +622,6 @@ form p a{
     height: auto;
     display: block;
     transition: 0.5s ease;
-}
-.about-image:hover img{
-    transform: scale(1.2);
 }
 .about-content{
     flex:1;
