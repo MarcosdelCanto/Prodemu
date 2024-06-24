@@ -21,13 +21,50 @@
             <img src="{% static 'main/imagenes/logo.png' %}" alt="">
         </a>
         <div class="header-right">
-            <a href="/">Inicio</a>
-            <a href="/productos">Productos</a>
-            <a href="/nosotros">Sobre nosotros</a>
-            <a href="/login">Perfil</a>
-            <a class="nav-link" href="/carrito">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
+            {% if user.is_authenticated %}
+            <ul>
+                <li>
+                    <p>Hola, {{ user.username }}!</p>
+                </li>
+                <li>
+                    <a href="/">Inicio</a>
+                </li>
+                <li>
+                    <a href="/productos">Productos</a>
+                </li>
+                <li>
+                    <a href="/nosotros">Sobre nosotros</a>
+                </li>
+                <li>
+                    <a href="#">Salir</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#" onclick="abrirCarrito()">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+            </ul>
+            {% else %}
+            <ul>
+                <li>
+                    <a href="/">Inicio</a>
+                </li>
+                <li>
+                    <a href="/productos">Productos</a>
+                </li>
+                <li>
+                    <a href="/nosotros">Sobre nosotros</a>
+                </li>
+                <li>
+                    <a href="/accounts/login/">Ingresar</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+                        <i onclick="abrirCarrito()" class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+            </ul>
+            {% endif %} 
         </div>
     </div>
 

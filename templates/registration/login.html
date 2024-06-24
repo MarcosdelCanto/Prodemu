@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block contenido %}
+<div class="login-container">
+    <div class="form-box">
+        <h1 id="titulo">Inicio de Sesión</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                    {{ form }}
+                
+                <p>¿Olvidaste tu contraseña? <a href="#">click aquí</a></p>
+            </div>
+            <div class="btn-field">
+                <button type="submit" id="inSeBtn" class="disable">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{% static 'main/js/code.js' %}"></script>
+{% endblock contenido %}

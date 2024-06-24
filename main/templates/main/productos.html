@@ -28,12 +28,12 @@
                         <img src="{% static 'main/imagenes/producto1.png' %}" alt="Item image">
                     </div>
                     <div class="item-info">
-                        <h2>Aceite de ricino</h2>
+                        <h2>Aceite anticaida</h2>
                         <p>Lorem ipsum dolor sit amet conse sctetur adipiscing elit. Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
                         <div>
                             <span class="precio">$9.000</span>
                         </div>
-                        <a href="#" class="add-btn">Añadir al carrito</a>
+                        <button onclick="agregarAlCarrito"('Aceite anticaida') class="add-btn">Añadir al carrito</button>
                     </div>
                 </div>
                 <div class="filter-item">
@@ -46,7 +46,7 @@
                         <div>
                             <span class="precio">$10.000</span>
                         </div>
-                        <a href="#" class="add-btn">Añadir al carrito</a>
+                        <button onclick="agregarAlCarrito"('Aceite de ricino') class="add-btn">Añadir al carrito</button>
                     </div>
                 </div>
                 <div class="filter-item">
@@ -59,7 +59,7 @@
                         <div>
                             <span class="precio">$15.000</span>
                         </div>
-                        <a href="#" class="add-btn">Añadir al carrito</a>
+                        <button onclick="agregarAlCarrito"('Kit limpieza facial') class="add-btn">Añadir al carrito</button>
                     </div>
                 </div>
                 <div class="filter-item">
@@ -131,4 +131,16 @@
         </div>
     </div>
 </div>
+<script>
+    let carrito = [];
+    function agregarAlCarrito(producto){
+        carrito.push(producto);
+        alert(`"${producto}" se agregó al carrito.`);
+    }
+    function abrirCarrito(){
+        let mensaje = encodeURIComponent(`¡Hola! Quiero comprar los siguientes productos: ${carrito.join(', ')}`);
+
+        window.location.href = `https://wa.me/56997092033/?text=${mensaje}`;
+    }
+</script>
 {% endblock contenido %}

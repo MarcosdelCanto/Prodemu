@@ -45,6 +45,7 @@ body {
 }
 .header-right {
     float: right;
+    display: flex;
 }
 .header-right a{
     padding: 20px 10px;
@@ -55,6 +56,24 @@ body {
     color: var(--morado);
     text-decoration: none;
 }
+.header-right p{
+    padding: 20px 10px;
+    color: var(--morado-claro);
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 17px;
+    font-weight: 600; 
+    line-height: 25px;
+}
+.header-right ul{
+    list-style: none;
+}
+.header-right li{
+    float: left;
+}
+
 .logo img{
     margin-top: 10px;
     width: 200px;
@@ -230,7 +249,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
 }
-.input-field{
+.input-group input{
     background: var(--fondo);
     margin: 15px 0;
     border-radius: 3px;
@@ -287,6 +306,7 @@ form p a{
     outline: 0;
     cursor: pointer;
     transition: background 1s;
+    margin: auto;
 }
 .input-group{
     height: 280px;
