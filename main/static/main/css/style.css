@@ -298,8 +298,8 @@ form p a{
     margin: auto;
 }
 .input-grupo{
-    height: 280px;
     display: block;
+    height: fit-content;
 }
 .input-grupo input{
     background: var(--fondo);

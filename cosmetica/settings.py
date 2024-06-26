@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'cosmetica.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cosmetica',
+        'NAME': 'cosmeticaadv',
         'USER' : 'root',
         'PASSWORD' : 'c0sm3t1c4',
         'HOST' : 'localhost',

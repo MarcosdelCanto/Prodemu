@@ -23,51 +23,49 @@
         </a>
         <div class="header-right">
             {% if user.is_authenticated %}
-                {% if user.is_staff %}
-            <ul>
-                <li>
-                    <p>Hola, {{ user.username }}!</p>
-                </li>
-                <li>
-                    <a href="/">Inicio</a>
-                </li>
-                <li>
-                    <a href="/productos">Productos</a>
-                </li>
-                <li>
-                    <a href="/nosotros">Sobre nosotros</a>
-                </li>
-                <li>
-                    <a href="/logout">Salir</a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#" onclick="abrirCarrito()">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </li>
-            </ul>
-                {% endif %}
+                <ul>
+                    <li>
+                        <p>Hola, {{ user.username }}!</p>
+                    </li>
+                    <li>
+                        <a href="/">Inicio</a>
+                    </li>
+                    {% if user.is_staff %}
+                        <li>
+                            <a href="/productos-admin">Productos</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="/productos">Productos</a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a href="/nosotros">Sobre nosotros</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Salir</a>
+                    </li>
             {% else %}
-            <ul>
-                <li>
-                    <a href="/">Inicio</a>
-                </li>
-                <li>
-                    <a href="/productos">Productos</a>
-                </li>
-                <li>
-                    <a href="/nosotros">Sobre nosotros</a>
-                </li>
-                <li>
-                    <a href="/accounts/login/">Ingresar</a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">
-                        <i onclick="abrirCarrito()" class="fas fa-shopping-cart"></i>
-                    </a>
-                </li>
-            </ul>
-            {% endif %} 
+                <ul>  
+                    <li>
+                        <a href="/">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="/productos">Productos</a>
+                    </li>
+                    <li>
+                        <a href="/nosotros">Sobre nosotros</a>
+                    </li>
+                    <li>
+                        <a href="accounts/login/">Ingresar</a>
+                    </li>
+            {% endif %}
+                    <li>
+                        <a class="nav-link" href="#">
+                            <i onclick="abrirCarrito()" class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                </ul>
         </div>
     </div>
 

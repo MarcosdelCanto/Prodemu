@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required, permission_required
@@ -26,7 +26,8 @@ def productos(request):
 
 def userout(request):
     logout(request)
-    return render(request, 'main/inicio.html')
+    messages.success(request, 'Has cerrado sesión exitosamente.')
+    return redirect('/')
 
 @login_required
 @permission_required('main.add_producto')
