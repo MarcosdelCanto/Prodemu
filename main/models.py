@@ -40,7 +40,7 @@ class Producto (models.Model):
     descri_producto = models.TextField(max_length= 150, verbose_name='Descripcion')
     precio_producto = models.IntegerField(verbose_name='Precio')
     estado_producto = models.BooleanField(default=True, verbose_name='Disponibilidad') 
-    img_producto = models.ImageField(upload_to="productos")
+    img_producto = models.ImageField(upload_to="productos", blank=True)
     id_categoria = models.ForeignKey(Categoria_producto, on_delete=models.CASCADE, verbose_name='Categoria')
     def __str__(self):
         return self.nombre_producto

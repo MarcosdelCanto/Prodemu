@@ -23,6 +23,7 @@
         </a>
         <div class="header-right">
             {% if user.is_authenticated %}
+                {% if user.is_staff %}
             <ul>
                 <li>
                     <p>Hola, {{ user.username }}!</p>
@@ -45,6 +46,7 @@
                     </a>
                 </li>
             </ul>
+                {% endif %}
             {% else %}
             <ul>
                 <li>

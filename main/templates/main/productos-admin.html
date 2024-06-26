@@ -23,6 +23,7 @@
                 </form>
             </div>
             <div class="filter-items">
+                <!-- ---------------------------------------------------------------------------- -->
                 {% for producto in productos %}
                 <div class="filter-item">
                     <div class="item-img">
@@ -38,6 +39,14 @@
                     </div>
                 </div>
                 {% endfor %}
+                    <!-- {{ producto.id_categoria }} -->
+            </div>
+            <div class="formulario-productos">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Guardar</button>
+                </form>
             </div>
         </div>
     </div>

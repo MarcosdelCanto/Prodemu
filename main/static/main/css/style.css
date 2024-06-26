@@ -595,6 +595,25 @@ form p a{
     border: 1px solid transparent;
     border-radius: 20px;
 }
+.formulario-productos{
+    display: block;
+    border: solid 2px #000 ;
+    width: 60vw;
+    margin: auto;
+}
+.formulario-productos input{
+    background: var(--fondo);
+    margin: 15px 0;
+    border-radius: 3px;
+    max-height: 65px;
+    transition: max-height 0.5s;
+    width: 100%;
+}
+.formulario-productos label{
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
 
 /* estilo pagina sobre nosotros */
 /*card*/
