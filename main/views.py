@@ -19,9 +19,18 @@ def carrito (request):
     return render(request,'main/carrito.html')
 
 def productos(request):
-    productos = Producto.objects.all()
+    id_categoria = request.GET.get('id_categoria')
+    if id_categoria:
+        productos = Producto.objects.filter(id_categoria=id_categoria)
+    else:
+        productos = Producto.objects.all()
+
+    categorias = Categoria_producto.objects.all()
+    
     return render(request,'main/productos.html', {
-        'productos':productos
+        'productos':productos,
+        'categorias':categorias,
+        'id_categoria':id_categoria
     })
 
 def userout(request):
@@ -35,11 +44,11 @@ def userout(request):
 def productosadmin(request, producto_id=None):
     productos = Producto.objects.all()
     if producto_id:
-        producto = get_object_or_404(Producto, id=producto_id)
+        producto = get_object_or_404(Producto, id_producto=producto_id)
     else:
         producto = None
     if request.method == 'POST':
-        form = ProductoForm(request.POST, request.FILES)
+        form = ProductoForm(request.POST, instance=producto)
         if form.is_valid():
             form.save()
             messages.success(request,'Producto añadido con éxito')
@@ -48,34 +57,12 @@ def productosadmin(request, producto_id=None):
         form = ProductoForm(instance=producto)
     return render(request, 'main/productos-admin.html', {
         'form':form,
-        'productos':productos
+        'productos':productos,
+        'producto_id':producto_id
     })
 
-def gestionar_producto(request):
-    producto = None
-    form_select = ProductoSelectForm(request.POST or None)
-    form = ProductoForm()
+        
 
-    if request.method == 'POST':
-        if 'seleccionar' in request.POST:
-            if form_select.is_valid():
-                producto = form_select.cleaned_data['producto']
-                if producto:
-                    form = ProductoForm(instance=producto)
-        else:
-            producto = None if form_select.cleaned_data.get('producto') is None else form_select.cleaned_data['producto']
-            form = ProductoForm(request.POST, request.FILES, instance=producto)
-            if form.is_valid():
-                form.save()
-                return redirect('productos_list')
-
-    context = {
-        'form_select': form_select,
-        'form': form,
-        'producto': producto
-    }
-
-    return render(request, 'productos-admin.html', context)
 def productos_categoria(request, id_categoria):
     categoria= get_object_or_404(Categoria_producto, id=id_categoria)
     productos = Producto.objects.filter(categoria=categoria)

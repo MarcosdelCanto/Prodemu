@@ -1,3 +1,5 @@
+
+
 let carrito = [];
     function agregarAlCarrito(nombre_producto, precio_producto){
         carrito.push(nombre_producto,precio_producto);
@@ -17,3 +19,4 @@ let carrito = [];
         
         window.location.href = 'https://wa.me/56997092033/?text=${mensajeWhatsapp}';
     }
+

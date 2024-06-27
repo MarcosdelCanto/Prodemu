@@ -7,12 +7,19 @@
             <div class="cabecera-producto">
                 <h1>Productos</h1>
             </div>
-            <div class="filter-btns">
+            <!-- <div class="filter-btns">
                 <button type ="button" class="filter-btn" id="todo">Todo</button>
                 <button type ="button" class="filter-btn" id="belleza-flt">Belleza</button>
                 <button type ="button" class="filter-btn" id="syb-flt">Salud y bienestar</button>
                 <button type ="button" class="filter-btn" id="banio">Baño</button>
-            </div>
+            </div> -->
+            <h2>Lista de Categorías</h2>
+                <ul>
+                    <li><a href="{% url 'productos' %}">Todas</a></li>
+                    {% for categoria in categorias %}
+                    <li><a href="{% url 'productos' %}?id_categoria={{ categoria.id_categoria }}">{{ categoria.descrip_categoria }}</a></li>
+                    {% endfor %}
+                </ul>
         
             <div class="contenedor-search">
                 <form class="search-bar" action="" style="margin:auto;max-width:300px">
