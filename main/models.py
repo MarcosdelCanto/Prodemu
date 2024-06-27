@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Cliente(models.Model):
@@ -45,17 +46,18 @@ class Producto (models.Model):
     def __str__(self):
         return self.nombre_producto
     
+class Carro_compra (models.Model):
+    id_carro = models.AutoField(primary_key=True)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return 'Carrito de: '+ self.usuario.username
+    
 class Detalle_carro (models.Model):
+    id_carro = models.ForeignKey(Carro_compra,on_delete=models.CASCADE)
     id_detalle_carro = models.AutoField(primary_key=True)
-    cantidad_prod = models.IntegerField()
-    precio_prod = models.IntegerField()
+    cantidad_prod = models.IntegerField(default=1)
     id_producto = models.ForeignKey(Producto,on_delete=models.CASCADE)
     class Meta:
         verbose_name = 'Detalle_carro'
-    
-class Carro_compra (models.Model):
-    id_carro = models.AutoField(primary_key=True)
-    fecha_crea_carro = models.DateField()
-    total_monto_carro = models.IntegerField()
-    id_cli = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    id_detalle_carro = models.ForeignKey(Detalle_carro, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.cantidad_prod} x {self.id_producto.nombre_producto}'

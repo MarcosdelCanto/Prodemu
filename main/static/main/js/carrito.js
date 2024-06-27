@@ -1,22 +1,15 @@
+function abrirCarrito() {
+    const items_carrito_w = JSON.parse(document.getElementById('items-carrito').textContent);
+    let mensaje = "¡Hola! Quiero comprar los siguientes productos:\n";
+    let total = 0;
 
+    items_carrito_w.forEach(item => {
+        mensaje += `${item.id_producto__nombre_producto}, $${item.id_producto__precio_producto} x ${item.cantidad_prod}\n`;
+        total += item.id_producto__precio_producto * item.cantidad_prod;
+    });
 
-let carrito = [];
-    function agregarAlCarrito(nombre_producto, precio_producto){
-        carrito.push(nombre_producto,precio_producto);
-        alert('"${nombre_producto}" se agregó al carrito.');
-    }
-    function abrirCarrito(){
-        let mensaje = "¡Hola! Quiero comprar los siguientes productos:\n";
-        let total = 0;
+    mensaje += `Total: $${total.toFixed(2)}`;
+    let mensajeWhatsapp = encodeURIComponent(mensaje);
 
-        carrito.forEach(item =>{
-            mensaje += '${item.nombre_producto}, $${item.precio_producto}\n';
-            total += item.precio_producto;
-        });
-
-        mensaje += 'Total: $${total}';
-        let mensajeWhatsapp = encodeURIComponent(mensaje);
-        
-        window.location.href = 'https://wa.me/56997092033/?text=${mensajeWhatsapp}';
-    }
-
+    window.location.href = `https://wa.me/56997092033/?text=${mensajeWhatsapp}`;
+}

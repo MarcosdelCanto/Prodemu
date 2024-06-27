@@ -3,7 +3,9 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required, permission_required
 from .forms import ProductoForm
-from .models import  Producto, Categoria_producto
+from .models import  Producto, Categoria_producto, Carro_compra, Detalle_carro
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 # Create your views here.
 def inicio(request):
@@ -15,8 +17,34 @@ def login(request):
 def nosotros(request):
     return render(request,'main/sobre_nosotros.html')
 
-def carrito (request):
-    return render(request,'main/carrito.html')
+@login_required
+def agregar_al_carrito(request, producto_id):
+    producto = get_object_or_404(Producto, id_producto=producto_id)
+    carrito, created = Carro_compra.objects.get_or_create(usuario=request.user)
+
+    item_carrito, created = Detalle_carro.objects.get_or_create(id_carro=carrito, id_producto=producto)
+    if not created:
+        item_carrito.cantidad_prod += 1
+        item_carrito.save()
+
+    return redirect('/productos')
+
+@login_required
+def ver_carrito(request):
+    
+    carrito = get_object_or_404(Carro_compra, usuario=request.user)
+    items_carrito = Detalle_carro.objects.filter(id_carro=carrito)
+    items_carrito_w = Detalle_carro.objects.all().values(
+        'id_producto__nombre_producto',
+        'id_producto__precio_producto',
+        'cantidad_prod'
+    )
+    items_carrito_list = list(items_carrito_w)
+    items_carrito_json = json.dumps(list(items_carrito_list), cls=DjangoJSONEncoder)
+    return render(request, 'main/ver_carrito.html', 
+        {'items_carrito': items_carrito,
+        'items_carrito_json': items_carrito_json
+    })
 
 def productos(request):
     id_categoria = request.GET.get('id_categoria')

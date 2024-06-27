@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block contenido %}
+<h1>Carrito de Compras</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items_carrito %}
+        <tr>
+            <td>{{ item.id_producto.nombre_producto }}</td>
+            <td>{{ item.cantidad_prod }}</td>
+            <td>{{ item.id_producto.precio_producto }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'productos' %}">Seguir comprando</a>
+
+<button onclick="abrirCarrito()" class="add-btn">Abrir carrito</button>
+
+<script id="items-carrito" type="application/json">
+    const items_carrito_w = {{ items_carrito_json|safe }}
+</script>
+
+<script src="{% static 'main/js/carrito.js' %}"></script>
+
+{% endblock contenido %}
+

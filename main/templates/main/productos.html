@@ -41,7 +41,8 @@
                         <div>
                             <span class="precio">${{ producto.precio_producto }}</span>
                         </div>
-                        <button onclick="agregarAlCarrito('{{ producto.nombre_producto }}','{{ producto.precio_producto }}')" class="add-btn">Añadir al carrito</button>
+                        <a href="{% url 'agregar_al_carrito' producto.id_producto %}">Agregar al carrito</a>
+                        <!-- <button onclick="agregarAlCarrito('{{ producto.nombre_producto }}','{{ producto.precio_producto }}')" class="add-btn">Añadir al carrito</button> -->
                     </div>
                 </div>
                 {% endfor %}
