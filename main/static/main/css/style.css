@@ -445,6 +445,7 @@ form p a{
     -o-transition: transform 0.2s ease-in-out;
     transition: transform 0.2s ease-in-out;
     transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+    margin-bottom: 15px;
 }
 .filter-item:hover .item-img img{
     transform: scale(1.1);
@@ -454,6 +455,7 @@ form p a{
     font-size: 13px;
     margin-top: 8px;
     color: gray;
+    min-height: 8rem;
 }
 .item-info h2{
     font-size: 20px;
@@ -597,22 +599,46 @@ form p a{
 }
 .formulario-productos{
     display: block;
-    border: solid 2px #000 ;
-    width: 60vw;
+    border: solid transparent;
+    border-radius: 20px;
+    width: 500px;
     margin: auto;
+    background: var(--fondo-input);
 }
-.formulario-productos input{
-    background: var(--fondo);
-    margin: 15px 0;
+.formulario-productos input, textarea{
+    margin: auto;
+    margin-top: 10px;
     border-radius: 3px;
     max-height: 65px;
     transition: max-height 0.5s;
-    width: 100%;
+    width: 70%;
+    background: var(--fondo)
 }
+
 .formulario-productos label{
     font-size: 1.2rem;
     font-weight: 100;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
+.formulario-productos button{
+    flex-basis: 48%;
+    background: var(--morado);
+    color: var(--fondo);
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+    margin: auto;
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
 
 
 /* estilo pagina sobre nosotros */
