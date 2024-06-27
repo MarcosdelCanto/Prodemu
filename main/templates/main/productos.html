@@ -34,7 +34,7 @@
                         <div>
                             <span class="precio">${{ producto.precio_producto }}</span>
                         </div>
-                        <button onclick="agregarAlCarrito('{{ producto.nombre_producto }}')" class="add-btn">Añadir al carrito</button>
+                        <button onclick="agregarAlCarrito('{{ producto.nombre_producto }}','{{ producto.precio_producto }}')" class="add-btn">Añadir al carrito</button>
                     </div>
                 </div>
                 {% endfor %}
@@ -44,14 +44,23 @@
 </div>
 <script>
     let carrito = [];
-    function agregarAlCarrito(producto){
-        carrito.push(producto);
-        alert('"${producto}" se agregó al carrito.');
+    function agregarAlCarrito(nombre_producto, precio_producto){
+        carrito.push(nombre_producto,precio_producto);
+        alert('"${nombre_producto}" se agregó al carrito.');
     }
     function abrirCarrito(){
-        let mensaje = encodeURIComponent('¡Hola! Quiero comprar los siguientes productos: ${carrito.join(', ')}');
+        let mensaje = "¡Hola! Quiero comprar los siguientes productos:\n";
+        let total = 0;
 
-        window.location.href = 'https://wa.me/56997092033/?text=${mensaje}';
+        carrito.forEach(item =>{
+            mensaje += '${item.nombre_producto}, $${item.precio_producto}\n';
+            total += item.precio_producto;
+        });
+
+        mensaje += 'Total: $${total}';
+        let mensajeWhatsapp = encodeURIComponent(mensaje);
+        
+        window.location.href = 'https://wa.me/56997092033/?text=${mensajeWhatsapp}';
     }
 </script>
 {% endblock contenido %}

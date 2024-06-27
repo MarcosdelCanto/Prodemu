@@ -42,10 +42,10 @@
                     <!-- {{ producto.id_categoria }} -->
             </div>
             <div class="formulario-productos">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit">Guardar</button>
+                    <button type="submit">{% if form.instance.pk %} Actualizar Producto {% else %}Guardar Producto{% endif %}</button>
                 </form>
             </div>
         </div>
