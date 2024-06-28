@@ -31,20 +31,41 @@ def agregar_al_carrito(request, producto_id):
 
 @login_required
 def ver_carrito(request):
+    carrito, created = Carro_compra.objects.get_or_create(usuario=request.user)
     
-    carrito = get_object_or_404(Carro_compra, usuario=request.user)
     items_carrito = Detalle_carro.objects.filter(id_carro=carrito)
-    items_carrito_w = Detalle_carro.objects.all().values(
+    items_carrito_w = items_carrito.values(
         'id_producto__nombre_producto',
         'id_producto__precio_producto',
-        'cantidad_prod'
+        'cantidad_prod',
     )
     items_carrito_list = list(items_carrito_w)
-    items_carrito_json = json.dumps(list(items_carrito_list), cls=DjangoJSONEncoder)
+    items_carrito_json = json.dumps(items_carrito_list, cls=DjangoJSONEncoder)
+    
     return render(request, 'main/ver_carrito.html', 
         {'items_carrito': items_carrito,
         'items_carrito_json': items_carrito_json
     })
+    
+@login_required
+def limpiar_carrito(request):
+    if request.method == 'POST':
+        carrito_id = request.POST.get('carrito_id')
+        if carrito_id:
+            try:
+                carrito = Carro_compra.objects.get(id_carro=int(carrito_id))
+                carrito.detalle_carro.all().delete()
+                carrito.delete()
+                return redirect('/productos')
+            except Carro_compra.DoesNotExist:
+                # Manejar el caso donde no se encuentra el carrito
+                pass
+            except ValueError:
+                # Manejar el caso donde carrito_id no es un número válido
+                pass
+    
+    # Manejar el caso donde no se puede limpiar el carrito
+    return render(request, 'main/ver_carrito.html', {'mensaje': 'No se pudo limpiar el carrito.'})
 
 def productos(request):
     id_categoria = request.GET.get('id_categoria')
@@ -68,7 +89,6 @@ def userout(request):
 
 @login_required
 @permission_required('main.add_producto')
-
 def productosadmin(request, producto_id=None):
     productos = Producto.objects.all()
     if producto_id:

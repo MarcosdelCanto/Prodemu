@@ -7,20 +7,28 @@
             <div class="cabecera-producto">
                 <h1>Productos</h1>
             </div>
-            <div class="filter-btns">
+            <!-- <div class="filter-btns">
                 <button type ="button" class="filter-btn" id="todo">Todo</button>
                 <button type ="button" class="filter-btn" id="belleza-flt">Belleza</button>
                 <button type ="button" class="filter-btn" id="syb-flt">Salud y bienestar</button>
                 <button type ="button" class="filter-btn" id="banio">Baño</button>
-            </div>
+            </div> -->
+            <!-- <div class="filter-btns">
+                <ul class="filtros-ul">
+                    <li class="filtros-li"><a class="filter-btn-enlace" href="{% url 'productos' %}">Todas</a></li>
+                    {% for categoria in categorias %}
+                    <li><a class="filter-btn-enlace" href="{% url 'productos' %}?id_categoria={{ categoria.id_categoria }}">{{ categoria.descrip_categoria }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div> -->
             <div class="formulario-productos">
                 <h2>{% if producto_id %}Editar Producto{% else %}Crear Producto{% endif %}</h2>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit">{% if producto_id %}Guardar Cambios{% else %}Crear{% endif %}</button>
+                    <a class="formulario-enlace" href="/productos-admin">Cancelar</a>
                 </form>
-                <a href="/productos-admin">Cancelar</a>
             </div>
             <div class="contenedor-search">
                 <form class="search-bar" action="" style="margin:auto;max-width:300px">
@@ -31,7 +39,6 @@
                 </form>
             </div>
             <div class="filter-items">
-                <!-- ---------------------------------------------------------------------------- -->
                 {% for producto in productos %}
                 <div class="filter-item">
                     <div class="item-img">
@@ -40,32 +47,41 @@
                     <div class="item-info">
                         <h2>{{ producto.nombre_producto }}</h2>
                         <p>{{ producto.descri_producto }}</p>
-                        <div>
+                        <div class="intem-info-bottom" >
                             <span class="precio">${{ producto.precio_producto }}</span>
+                            <a class="item-info-icon" href="{{producto.id_producto}}"> <!---creas class icono-->
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
                         </div>
-                        <button onclick="agregarAlCarrito('{{ producto.nombre_producto }}')" class="add-btn">Añadir al carrito</button>
-                        <a class="" href="{{producto.id_producto}}"> <!---creas class icono-->
-                            <i class="fa-solid fa-pencil"></i>
-                        </a>
+                        <!-- <a href="{% url 'agregar_al_carrito' producto.id_producto %}">Agregar al carrito</a> -->
+                        
+                        <!-- <button onclick="agregarAlCarrito('{{ producto.nombre_producto }}','{{ producto.precio_producto }}')" class="add-btn">Añadir al carrito</button> -->
                     </div>
                 </div>
                 {% endfor %}
-                    <!-- {{ producto.id_categoria }} -->
             </div>
-            
         </div>
     </div>
 </div>
 <script>
     let carrito = [];
-    function agregarAlCarrito(producto){
-        carrito.push(producto);
-        alert('"${producto}" se agregó al carrito.');
+    function agregarAlCarrito(nombre_producto, precio_producto){
+        carrito.push(nombre_producto,precio_producto);
+        alert('"${nombre_producto}" se agregó al carrito.');
     }
     function abrirCarrito(){
-        let mensaje = encodeURIComponent('¡Hola! Quiero comprar los siguientes productos: ${carrito.join(', ')}');
+        let mensaje = "¡Hola! Quiero comprar los siguientes productos:\n";
+        let total = 0;
 
-        window.location.href = 'https://wa.me/56997092033/?text=${mensaje}';
+        carrito.forEach(item =>{
+            mensaje += '${item.nombre_producto}, $${item.precio_producto}\n';
+            total += item.precio_producto;
+        });
+
+        mensaje += 'Total: $${total}';
+        let mensajeWhatsapp = encodeURIComponent(mensaje);
+        
+        window.location.href = 'https://wa.me/56997092033/?text=${mensajeWhatsapp}';
     }
 </script>
 {% endblock contenido %}

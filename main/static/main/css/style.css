@@ -391,7 +391,11 @@ form p a{
 .filter-btns{
     text-align: center;
 }
-.filter-btn{
+.filter-btn-enlace{
+    color: var(--morado-claro);
+    text-decoration: none;
+}
+.filtros-li a{
     background: none;
     cursor: pointer;
     border: none;
@@ -405,8 +409,26 @@ form p a{
     letter-spacing: 2px;
     position: relative;
     transition: all 0.2s ease-in-out;
+    display: inline;
 }
-.filter-btn::after{
+ul.filtros-ul li{
+    background: none;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    text-transform: uppercase;
+    display: inline;
+    margin: 10px 40px;
+    font-size: 16px;
+    color: var(--morado-claro);
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    list-style: none;
+    text-align: center;
+}
+.filtros-li::after a{
     content: "";
     position: absolute;
     top: 110%;
@@ -416,10 +438,42 @@ form p a{
     background-color: var(--fondo-input);
     transform: translateX(-50%);
 }
-.filter-btn:hover{
+.filtros-li:hover a{
     color: var(--morado);
 }
-.filter-btn:hover::after{
+.filtros-li:hover::after a{
+    width: 100%;
+}
+.filter-btn button{
+    background: none;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 10px 30px;
+    font-size: 16px;
+    color: var(--morado-claro);
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    list-style: none;
+}
+.filter-btn::after button{
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    height: 2px;
+    width: 0;
+    background-color: var(--fondo-input);
+    transform: translateX(-50%);
+}
+.filter-btn:hover button{
+    color: var(--morado);
+}
+.filter-btn:hover::after button{
     width: 100%;
 }
 .filter-items{
@@ -467,6 +521,18 @@ form p a{
     font-weight: 600;
     color: black;
     font-size: 30px;
+}
+.item-info-bottom{
+    display: flex;
+    flex-direction: column;
+}
+.item-info-icon i{
+    color: #674baf;
+    width: 30px;
+    height: 30px;
+    float: right;
+    display: flex;
+    align-items: flex-end;
 }
 .add-btn{
     display: inline-block;
@@ -614,7 +680,15 @@ form p a{
     width: 70%;
     background: var(--fondo)
 }
-
+.formulario-productos h2{
+    font-size: 2rem;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+    color: var(--morado);
+}
 .formulario-productos label{
     font-size: 1.2rem;
     font-weight: 100;
@@ -638,7 +712,15 @@ form p a{
     margin-bottom: 10px;
     align-items: center;
 }
-
+.formulario-enlace{
+    font-size: 1.2rem;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    text-decoration: underline;
+    color: #000;
+}
 
 
 /* estilo pagina sobre nosotros */
@@ -749,3 +831,74 @@ form p a{
         font-size: 16px;
     }
 }
+/* ----------------------------estilo carro------------------------------- */
+.contenedor-carro{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    background-color: var(--fondo-input);
+}
+.contenedor-carro h1{
+    margin-bottom: 50px;
+}
+.carrito-box{
+    padding: 10px;
+    margin: auto;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fondo);
+    border-radius: 10px;
+}
+.carrito-box button.add-btn-carro{
+    display: inline-block;
+    background-color: var(--morado);
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 2px;
+    border: 2px solid; 
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+.carrito-box button.add-btn-carro:hover{
+    border-color: var(--rosado);
+    background-color: #fff;
+    color: var(--rosado);
+    text-decoration: none;
+}
+.carrito-box a{
+    display: flex;
+    background-color: var(--morado);
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 2px;
+    border: 2px solid; 
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    justify-content: center;
+}
+.carrito-box a:hover{
+    border-color: var(--rosado);
+    background-color: #fff;
+    color: var(--rosado);
+    text-decoration: none;
+}
+/* .add-btn{
+    display: inline-block;
+    margin-top: 20px;
+    background-color: var(--morado);
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 2px;
+    border: 2px solid; 
+    transition: all 0.2s ease-in-out;
+}
+.add-btn:hover{
+    border-color: var(--rosado);
+    background-color: #fff;
+    color: var(--rosado);
+} */

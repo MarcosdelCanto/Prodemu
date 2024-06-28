@@ -1,5 +1,4 @@
 function abrirCarrito() {
-    const items_carrito_w = JSON.parse(document.getElementById('items-carrito').textContent);
     let mensaje = "¡Hola! Quiero comprar los siguientes productos:\n";
     let total = 0;
 
@@ -8,7 +7,7 @@ function abrirCarrito() {
         total += item.id_producto__precio_producto * item.cantidad_prod;
     });
 
-    mensaje += `Total: $${total.toFixed(2)}`;
+    mensaje += `Total: $${total}`;
     let mensajeWhatsapp = encodeURIComponent(mensaje);
 
     window.location.href = `https://wa.me/56997092033/?text=${mensajeWhatsapp}`;
