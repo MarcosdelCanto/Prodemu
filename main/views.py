@@ -44,28 +44,49 @@ def ver_carrito(request):
     
     return render(request, 'main/ver_carrito.html', 
         {'items_carrito': items_carrito,
-        'items_carrito_json': items_carrito_json
+        'items_carrito_json': items_carrito_json,
+        'carrito':carrito
     })
     
+# @login_required
+# def limpiar_carrito(request):
+#     if request.method == 'POST':
+#         carrito_id = request.POST.get('carrito_id')
+#         if carrito_id:
+#             carrito = Carro_compra.objects.get(id_carro=int(carrito_id))
+#             carrito.detalle_carro.all().delete()
+#             carrito.delete()
+#             return redirect('/productos')
+#     # Manejar el caso donde no se puede limpiar el carrito
+#     return render(request, 'main/ver_carrito.html', {'mensaje': 'No se pudo limpiar el carrito.'})
+
 @login_required
 def limpiar_carrito(request):
     if request.method == 'POST':
         carrito_id = request.POST.get('carrito_id')
-        if carrito_id:
+        print(f"carrito_id: {carrito_id}")  # Depuración: Imprimir el carrito_id recibido
+        
+        if carrito_id and carrito_id.strip():
             try:
-                carrito = Carro_compra.objects.get(id_carro=int(carrito_id))
-                carrito.detalle_carro.all().delete()
+                carrito = get_object_or_404(Carro_compra, id_carro=int(carrito_id))
+                
+                print(f"Carrito encontrado: {carrito}")  # Depuración: Imprimir el carrito encontrado
+                
+                Detalle_carro.objects.filter(id_carro=carrito).delete()
                 carrito.delete()
+                print("Carrito limpiado y eliminado de la base de datos.")  # Depuración: Confirmación de eliminación
+                
                 return redirect('/productos')
             except Carro_compra.DoesNotExist:
-                # Manejar el caso donde no se encuentra el carrito
-                pass
+                print("El carrito no existe.")  # Depuración: Carrito no encontrado
+                return render(request, 'main/ver_carrito.html', {'mensaje': 'El carrito no existe.'})
             except ValueError:
-                # Manejar el caso donde carrito_id no es un número válido
-                pass
-    
+                print("ID de carrito inválido.")  # Depuración: ID de carrito inválido
+                return render(request, 'main/ver_carrito.html', {'mensaje': 'ID de carrito inválido.'})
     # Manejar el caso donde no se puede limpiar el carrito
+    print("No se pudo limpiar el carrito.")  # Depuración: Caso de error general
     return render(request, 'main/ver_carrito.html', {'mensaje': 'No se pudo limpiar el carrito.'})
+
 
 def productos(request):
     id_categoria = request.GET.get('id_categoria')
@@ -108,8 +129,6 @@ def productosadmin(request, producto_id=None):
         'productos':productos,
         'producto_id':producto_id
     })
-
-        
 
 def productos_categoria(request, id_categoria):
     categoria= get_object_or_404(Categoria_producto, id=id_categoria)
