@@ -21,14 +21,14 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="contenedor-search">
+            <!-- <div class="contenedor-search">
                 <form class="search-bar" action="" style="margin:auto;max-width:300px">
                     <input type="text" placeholder="Buscar producto..." name="search2">
                     <button type="submit">
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
-            </div>
+            </div> -->
             <div class="filter-items">
                 {% for producto in productos %}
                 <div class="filter-item">
@@ -41,7 +41,7 @@
                         <div>
                             <span class="precio">${{ producto.precio_producto }}</span>
                         </div>
-                        <a href="{% url 'agregar_al_carrito' producto.id_producto %}">Agregar al carrito</a>
+                        <a class="acarrito" href="{% url 'agregar_al_carrito' producto.id_producto %}">Agregar al carrito</a>
                         <!-- <button onclick="agregarAlCarrito('{{ producto.nombre_producto }}','{{ producto.precio_producto }}')" class="add-btn">Añadir al carrito</button> -->
                     </div>
                 </div>

@@ -1,22 +1,34 @@
 {% extends "main/base.html" %}
-
+{%load static%}
 {% block contenido %}
-<div class="body-container">
-    <div class="body-container-fondo">
-        <div class="caja-producto-inicio">
-            <div class="caja-producto-info">
-                <a href="">
-                    <div>
-                        <img src="{{ img_inicio }}" alt="Item image">
-                    </div>
-                    <div>
-                        <h2>Beneficios del Baño de Espuma:</h2>
-                        <p>Releja los músculos, estimula la circulacion, desintoxica tu cuerpo y elimina nodulos linfaticos</p>
-                        <p>Recomendamos 2 veces por semana ;)</p>
-                    </div>
-                </a>
-            </div>
+<!--seccion home inicia-->  
+<section class="home" id="home">
+    <div class="contenido">
+        <h3>Cosmetica ADV</h3>
+        <span>Cosmetica natural para una vida saludable</span>
+        <p>Bienvenida a nuestro mundo de belleza natural, donde cada producto está cuidadosamente elaborado con ingredientes orgánicos y libres de parabenos.<br>
+            ¡Explora nuestros productos y deja que la naturaleza cuide de ti!</p>
+        <a href="/productos" class="btn-compra">Compra aquí</a>    
+    </div>
+</section>
+<!--seccion sobre nosotros--> 
+<section class="sobre-nosotros" id="sobre-nosotros">
+    <!-- <h1 class="heading-sn"> <span>Sobre</span> nosotros </h1> -->
+    <div class="row">
+        <div class="foto-container">
+            <img src="{% static 'main/imagenes/logo.png' %}">
+
+        </div>
+        <div class="contenido-sn">
+            <h3>¿Quiénes somos?</h3>
+            <p>Mi nombre es Carolina, una mujer porteña, casada y madre de tres hijos. 
+                Comencé mi viaje como emprendedora haciendo jabones artesanales en casa,
+                buscando generar ingresos sin descuidar a mi familia.
+                Con el tiempo, me inscribí en talleres y cursos sobre cosmética natural, 
+                lo que me dio la confianza para profesionalizar mi negocio.</p>
+                <a href="https://www.instagram.com/adv_cosmets/" target="_blank" rel="noopener noreferrer" class="boton-ig">Conoce mi instagram</a>
         </div>
     </div>
-</div>
+
+</section>
 {% endblock contenido %}

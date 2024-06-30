@@ -8,7 +8,7 @@
             {% csrf_token %}
             <div class="input-grupo">
                 {{ form }}
-                <p>¿Olvidaste tu contraseña? <a href="#">click aquí</a></p>
+                <!-- <p>¿Olvidaste tu contraseña? <a href="{% url 'password_reset' %}">click aquí</a></p> -->
             </div>
             <div class="btn-field">
                 <button type="submit" id="inSeBtn" class="disable">Iniciar Sesión</button>
@@ -16,5 +16,4 @@
         </form>
     </div>
 </div>
-<script src="{% static 'main/js/code.js' %}"></script>
 {% endblock contenido %}

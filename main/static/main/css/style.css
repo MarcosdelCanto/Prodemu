@@ -21,7 +21,7 @@ body {
 .header {
     overflow: hidden;
     background-color: #fff;
-    padding: 20px 10px;
+    padding-top: 20px;
     position: relative;
     top: 0;
 }
@@ -145,7 +145,7 @@ body {
     position: relative;
     bottom: 0;
     width: 100%;
-    background: #674baf;
+    background: var(--morado-claro);
     min-height: 100px;
     padding: 20px 50px;
     display: flex;
@@ -213,10 +213,18 @@ body {
     font-size: 20px;
 }
 
+.text-pequeno {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
 /* -------------------estilo login ----------------------*/
 .login-container{
     width: 100%;
-    height: 100vh;
+    height: 1000px;
     background-color: var(--fondo);
     background-position: center;
     background-size: relative;
@@ -478,6 +486,24 @@ ul.filtros-ul li{
 }
 .filter-items{
     margin-top: 40px;
+}
+.filter-items a.acarrito{
+    display: flex;
+    background-color: var(--morado);
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 2px;
+    border: 2px solid; 
+    transition: all 0.2s ease-in-out;
+    width: 0%;
+    justify-content: center;
+}
+.filter-items a.acarrito:hover{
+    border-color: var(--rosado);
+    background-color: #fff;
+    color: var(--rosado);
+    text-decoration: none;
 }
 .item-img{
     position: relative;
@@ -902,3 +928,163 @@ ul.filtros-ul li{
     background-color: #fff;
     color: var(--rosado);
 } */
+
+/* inicio */
+/* comienza la seccion home*/
+section{
+    padding: 2rem 9%;
+
+}
+.home{
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    min-height: 100vh;
+    background: url(../imagenes/foto_coco.jpg) no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+
+}
+.home .contenido{
+    margin: auto;
+    max-width: 43rem;
+
+}
+.home .contenido h3{
+    font-size: 5rem ;
+    color: #333;
+
+}
+.home .contenido span{
+    font-size: 3rem;
+    color: var(--pink);
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+.home .contenido p{
+    font-size: 1.5rem;
+    color: #999;
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+.btn-compra{
+    display:inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background: #333;
+    color: #fff;
+    padding: .9rem 3.5rem;
+    cursor: pointer;
+    font-size: 1.7rem;
+
+}
+.btn-compra:hover{
+    background: var(--pink);
+}
+
+/* comienza la seccion sobre nosotros*/
+.heading-sn{
+    text-align: center;
+    font-size: 4rem;
+    color: #333;
+    padding: 1rem;
+    margin: 2rem 0;
+    background: rgba(255, 51, 153,.05);
+}
+.heading-sn span{
+    color: var(--pink);
+
+}
+.sobre-nosotros .row{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    padding-bottom: 3rem;
+}
+.sobre-nosotros .row .foto-container{
+    flex: 1 1 40rem;
+    position: relative;
+
+}
+.sobre-nosotros .row .foto-container img{
+    width: 100%;
+    border: 1.5rem solid #fff;
+    border-radius: .5rem;
+    height: 100%;
+    object-fit: cover;
+}
+.sobre-nosotros .row .foto-container h3{
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    font-size: 3rem;
+    color:#333;
+    background: #fff;
+    width: 100%;
+    padding:1rem 2rem ;
+    text-align: center;
+
+}
+.sobre-nosotros .row .contenido-sn{
+    flex: 1 1 40rem;
+
+}
+.sobre-nosotros .row .contenido-sn h3{
+    font-size: 3rem;
+    color: #333;
+
+}
+.sobre-nosotros .row .contenido-sn p{
+    font-size: 1.5rem;
+    color: #999;
+    padding-top: 1rem;
+    line-height: 1.5;
+}
+.boton-ig{
+    display:inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background: var(--morado);
+    color: #fff;
+    padding: .9rem 3.5rem;
+    cursor: pointer;
+    font-size: 1.7rem; 
+    text-decoration: none;
+}
+.boton-ig:hover{
+    background: var(--morado-claro);
+    color: #fff;
+    transition: 0.2s;
+}
+@media (max-width:991px){
+
+    html{
+        font-size: 55%;
+    }
+    
+    section{
+        padding: 2rem;
+    }
+    .home{
+        background-position: left;
+    }
+}
+@media (max-width:768px){
+    .home .contenido h3{
+        font-size: 2.5rem;
+    }
+    .home .contenido span{
+        font-size: 5rem;
+    }
+}
+@media (max-width:450px){
+
+    html{
+        font-size: 50%;
+    }
+    .heading-sn{
+        font-size: 3rem;
+    }
+    
+}

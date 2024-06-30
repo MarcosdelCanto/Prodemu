@@ -65,7 +65,6 @@ def limpiar_carrito(request):
     if request.method == 'POST':
         carrito_id = request.POST.get('carrito_id')
         print(f"carrito_id: {carrito_id}")  # Depuración: Imprimir el carrito_id recibido
-        
         if carrito_id and carrito_id.strip():
             try:
                 carrito = get_object_or_404(Carro_compra, id_carro=int(carrito_id))
@@ -86,7 +85,6 @@ def limpiar_carrito(request):
     # Manejar el caso donde no se puede limpiar el carrito
     print("No se pudo limpiar el carrito.")  # Depuración: Caso de error general
     return render(request, 'main/ver_carrito.html', {'mensaje': 'No se pudo limpiar el carrito.'})
-
 
 def productos(request):
     id_categoria = request.GET.get('id_categoria')
@@ -117,7 +115,7 @@ def productosadmin(request, producto_id=None):
     else:
         producto = None
     if request.method == 'POST':
-        form = ProductoForm(request.POST, instance=producto)
+        form = ProductoForm(request.POST, request.FILES,instance=producto)
         if form.is_valid():
             form.save()
             messages.success(request,'Producto añadido con éxito')
@@ -133,4 +131,7 @@ def productosadmin(request, producto_id=None):
 def productos_categoria(request, id_categoria):
     categoria= get_object_or_404(Categoria_producto, id=id_categoria)
     productos = Producto.objects.filter(categoria=categoria)
-    return render(request, 'main/productos.html', {'categoria': categoria,'productos': productos})
+    return render(request, 'main/productos.html', {
+        'categoria': categoria,
+        'productos': productos
+    })
