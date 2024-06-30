@@ -496,7 +496,7 @@ ul.filtros-ul li{
     border-radius: 2px;
     border: 2px solid; 
     transition: all 0.2s ease-in-out;
-    width: 0%;
+    width: 100%;
     justify-content: center;
 }
 .filter-items a.acarrito:hover{
