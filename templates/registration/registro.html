@@ -7,7 +7,15 @@
         <form method="POST">
             {% csrf_token %}
             <div class="input-grupo">
-                {{ form }}
+                {{ form.non_field_errors }}
+                {{ form.username.errors }}
+                {{ form.username.label_tag }} {{ form.username }}
+                {{ form.email.errors }}
+                {{ form.email.label_tag }} {{ form.email }}
+                {{ form.password1.errors }}
+                {{ form.password1.label_tag }} {{ form.password1 }}
+                {{ form.password2.errors }}
+                {{ form.password2.label_tag }} {{ form.password2 }}
             </div>
             <div class="btn-field">
                 <button type="submit" id="inSeBtn" class="disable">Registrarme</button>
