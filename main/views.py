@@ -106,6 +106,28 @@ def userout(request):
     messages.success(request, 'Has cerrado sesión exitosamente.')
     return redirect('/')
 
+# @login_required
+# @permission_required('main.add_producto')
+# def productosadmin(request, producto_id=None):
+#     productos = Producto.objects.all()
+#     if producto_id:
+#         producto = get_object_or_404(Producto, id_producto=producto_id)
+#     else:
+#         producto = None
+#     if request.method == 'POST':
+#         form = ProductoForm(request.POST, request.FILES,instance=producto)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request,'Producto añadido con éxito')
+#             return redirect('/productos-admin')
+#     else:
+#         form = ProductoForm(instance=producto)
+#     return render(request, 'main/productos-admin.html', {
+#         'form':form,
+#         'productos':productos,
+#         'producto_id':producto_id
+#     })
+
 @login_required
 @permission_required('main.add_producto')
 def productosadmin(request, producto_id=None):
@@ -114,19 +136,28 @@ def productosadmin(request, producto_id=None):
         producto = get_object_or_404(Producto, id_producto=producto_id)
     else:
         producto = None
+
     if request.method == 'POST':
-        form = ProductoForm(request.POST, request.FILES,instance=producto)
-        if form.is_valid():
-            form.save()
-            messages.success(request,'Producto añadido con éxito')
-            return redirect('/productos-admin')
+        if 'delete' in request.POST:
+            if producto:
+                producto.delete()
+                messages.success(request, 'Producto eliminado con éxito')
+                return redirect('/productos-admin')
+        else:
+            form = ProductoForm(request.POST, request.FILES, instance=producto)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Producto añadido con éxito')
+                return redirect('/productos-admin')
     else:
         form = ProductoForm(instance=producto)
+
     return render(request, 'main/productos-admin.html', {
-        'form':form,
-        'productos':productos,
-        'producto_id':producto_id
+        'form': form,
+        'productos': productos,
+        'producto_id': producto_id
     })
+
 
 def productos_categoria(request, id_categoria):
     categoria= get_object_or_404(Categoria_producto, id=id_categoria)

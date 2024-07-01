@@ -7,26 +7,15 @@
             <div class="cabecera-producto">
                 <h1>Productos</h1>
             </div>
-            <!-- <div class="filter-btns">
-                <button type ="button" class="filter-btn" id="todo">Todo</button>
-                <button type ="button" class="filter-btn" id="belleza-flt">Belleza</button>
-                <button type ="button" class="filter-btn" id="syb-flt">Salud y bienestar</button>
-                <button type ="button" class="filter-btn" id="banio">Baño</button>
-            </div> -->
-            <!-- <div class="filter-btns">
-                <ul class="filtros-ul">
-                    <li class="filtros-li"><a class="filter-btn-enlace" href="{% url 'productos' %}">Todas</a></li>
-                    {% for categoria in categorias %}
-                    <li><a class="filter-btn-enlace" href="{% url 'productos' %}?id_categoria={{ categoria.id_categoria }}">{{ categoria.descrip_categoria }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div> -->
             <div class="formulario-productos">
                 <h2>{% if producto_id %}Editar Producto{% else %}Crear Producto{% endif %}</h2>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit">{% if producto_id %}Guardar Cambios{% else %}Crear{% endif %}</button>
+                    {% if producto_id %}
+                        <button type="submit" name="delete" value="delete">Eliminar</button>
+                    {% endif %}
                     <a class="formulario-enlace" href="/productos-admin">Cancelar</a>
                 </form>
             </div>
@@ -53,9 +42,6 @@
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
                         </div>
-                        <!-- <a href="{% url 'agregar_al_carrito' producto.id_producto %}">Agregar al carrito</a> -->
-                        
-                        <!-- <button onclick="agregarAlCarrito('{{ producto.nombre_producto }}','{{ producto.precio_producto }}')" class="add-btn">Añadir al carrito</button> -->
                     </div>
                 </div>
                 {% endfor %}
