@@ -149,7 +149,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ACCOUNT_FORMS = {
-    'signup': 'accounts.forms.CustomSignupForm',
+    'signup': 'accounts.forms.CustomUserCreationForm',
 }
 
 ACCOUNT_EMAIL_REQUIRED = True
