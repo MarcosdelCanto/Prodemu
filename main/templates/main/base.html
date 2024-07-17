@@ -48,54 +48,6 @@
             </ul>
         </div>
     </div>
-    {% comment %} <div class="header"> 
-        <a href="/"  id="logo" class="logo">
-            <img src="{% static 'main/imagenes/logo.png' %}" alt="">
-        </a>
-        <div class="header-right">
-            {% if user.is_authenticated %}
-                <ul>
-                    <li>
-                        <p>Hola, {{ user.username }}!</p>
-                    </li>
-                    <li>
-                        <a href="/">Inicio</a>
-                    </li>
-                    {% if user.is_staff %}
-                        <li>
-                            <a href="/productos-admin">Productos</a>
-                        </li>
-                    {% else %}
-                        <li>
-                            <a href="/productos">Productos</a>
-                        </li>
-                    {% endif %}
-                    <li>
-                        <a href="/logout">Salir</a>
-                    </li>
-            {% else %}
-                <ul>  
-                    <li>
-                        <a href="/">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="/productos">Productos</a>
-                    </li>
-                    <li>
-                        <a href="/accounts/login/">Ingresar</a>
-                    </li>
-                    <li>
-                        <a href="/accounts/signup">Registrarme</a>
-                    </li>
-            {% endif %}
-                    <li>
-                        <a class="nav-link" href="/ver_carrito/">
-                            <i onclick=""  class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                </ul>
-        </div>
-    </div> {% endcomment %}
 
 {% block contenido %}
 
