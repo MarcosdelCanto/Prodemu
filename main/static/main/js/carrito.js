@@ -10,5 +10,5 @@ function abrirCarrito() {
     mensaje += `Total: $${total}`;
     let mensajeWhatsapp = encodeURIComponent(mensaje);
 
-    window.location.href = `https://wa.me/56997092033/?text=${mensajeWhatsapp}`;
+    window.location.href = `https://wa.me/56998665191/?text=${mensajeWhatsapp}`;
 }

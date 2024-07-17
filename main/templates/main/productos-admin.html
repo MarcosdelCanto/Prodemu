@@ -7,7 +7,7 @@
             <div class="cabecera-producto">
                 <h1>Productos</h1>
             </div>
-            <div class="formulario-productos">
+            <div class="formulario-productos" id="formulario-productos">
                 <h2>{% if producto_id %}Editar Producto{% else %}Crear Producto{% endif %}</h2>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}

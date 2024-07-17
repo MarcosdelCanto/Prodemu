@@ -37,6 +37,114 @@ body {
     border-radius: 40px;
     transition: all 0.2s ease-in-out;
 }
+.header svg {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    text-align: center;
+}
+.header-right {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+.header-right .menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+.header-right ul {
+    list-style: none;
+    display: flex;
+}
+.header-right li {
+    float: left;
+}
+.header-right a {
+    padding: 20px 10px;
+    color: var(--morado-claro);
+    text-transform: uppercase;
+}
+.header-right a:hover {
+    color: var(--morado);
+    text-decoration: none;
+}
+.header-right p {
+    float: left;
+    padding: 20px 10px;
+    color: var(--morado-claro);
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 25px;
+}
+.logo img {
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .header-right ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    .header-right ul.show {
+        display: flex;
+    }
+    .header-right .menu-toggle {
+        display: block;
+    }
+    .header-right li {
+        width: 100%;
+        text-align: center;
+    }
+
+    #home{
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+        min-height: 100vh;
+        background: var(--fondo);
+        transition: 0.3s;
+        background-size: 100% 100%;
+        background-position: center;
+    }
+    #formulario-productos{
+        display: block;
+        border: solid transparent;
+        border-radius: 20px;
+        width: 100%;
+        margin: auto;
+        background: var(--fondo-input);
+    }
+
+}
+/* .header {
+    overflow: hidden;
+    background-color: #fff;
+    padding-top: 20px;
+    position: relative;
+    top: 0;
+}
+.header a {
+    float: left;
+    color: var(--morado-claro);
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 17px;
+    font-weight: 600; 
+    line-height: 25px;
+    border-radius: 40px;
+    transition: all 0.2s ease-in-out;
+}
 .header svg{
     width: 30px;
     height: 30px;
@@ -88,7 +196,7 @@ body {
     .header-right {
         float: none;
     }
-}  
+}   */
 
 /* Estilos para el contenedor del inicio */
 .caja-producto-inicio{
@@ -183,7 +291,6 @@ body {
     display: flex;
     justify-content: center;
     position: relative;
-    align-items: center;
     margin: 10px 0;
     flex-wrap: wrap;
 }
@@ -871,7 +978,6 @@ ul.filtros-ul li{
 .carrito-box{
     padding: 10px;
     margin: auto;
-    width: 30%;
     display: flex;
     flex-direction: column;
     background-color: var(--fondo);
@@ -941,6 +1047,7 @@ section{
     max-width: 100%;
     min-height: 100vh;
     background: url(../imagenes/foto_coco.jpg) no-repeat;
+    transition: 0.3s;
     background-size: 100% 100%;
     background-position: center;
 
